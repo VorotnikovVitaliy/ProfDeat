@@ -1,0 +1,146 @@
+        :root {
+            --bg-color: #121212;       /* Очень темный фон */
+            --card-bg: #1e1e1e;        /* Фон карточки */
+            --text-main: #e0e0e0;      /* Светлый текст */
+            --text-muted: #a0a0a0;     /* Серый текст */
+            --accent: #bb86fc;         /* Нежный фиолетовый акцент */
+            --accent-hover: #9955e8;   /* Цвет при наведении */
+            --input-bg: #2c2c2c;       /* Фон полей ввода */
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .converter-card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .converter-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--input-bg);
+            border: 1px solid transparent;
+            border-radius: var(--border-radius);
+            color: var(--text-main);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(187, 134, 252, 0.1);
+        }
+
+        /* Стили для выпадающего списка, чтобы он был темным */
+        select option {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+        }
+
+        .currency-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .currency-col {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--accent);
+            color: #121212; /* Темный текст на светлой кнопке для контраста */
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(187, 134, 252, 0.1); /* Полупрозрачный фон */
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(187, 134, 252, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .result-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптив для мобильных */
+        @media (max-width: 480px) {
+            .converter-card {
+                padding: 25px;
+            }
+            .currency-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
