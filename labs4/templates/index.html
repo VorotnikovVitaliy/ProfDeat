@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Конвертер Валют</title>
+</head>
+<body>
+
+<div class="converter-card">
+    <h2>Конвертер</h2>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="amount">Сумма</label>
+            <input type="number" 
+                   id="amount" 
+                   name="amount" 
+                   step="0.01" 
+                   placeholder="0.00" 
+                   required 
+                   value="{{ request.form.amount if request.form.amount else '' }}"
+                   autocomplete="off">
+        </div>
+        
+        <div class="currency-row">
+            <div class="currency-col form-group">
+                <label for="from_currency">Из</label>
+                <select id="from_currency" name="from_currency">
+                    {% for curr in currencies %}
+                        <option value="{{ curr }}" {% if curr == default_from %}selected{% endif %}>{{ curr }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="currency-col form-group">
+                <label for="to_currency">В</label>
+                <select id="to_currency" name="to_currency">
+                    {% for curr in currencies %}
+                        <option value="{{ curr }}" {% if curr == default_to %}selected{% endif %}>{{ curr }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Рассчитать</button>
+    </form>
+
+    {% if result %}
+        <div class="result-box">
+            <div class="result-text">{{ result }}</div>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
